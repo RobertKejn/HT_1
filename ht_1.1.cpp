@@ -11,7 +11,7 @@ int main()
 	int length2 = 0;
 	int num = 0;
 
-	if (fin.is_open()) {
+	if (fin.is_open() && fon.is_open()) {
 		fin >> length1;
 		int* arr1 = new int[length1];
 		if (length1 > 0) {
@@ -19,7 +19,7 @@ int main()
 				fin >> arr1[i];
 			}
 			int last = arr1[0];
-			for (int i = 0; i < length1; ++i) {
+			for (int i = 0; i < length1-1; ++i) {
 				arr1[i] = arr1[i + 1];
 			}
 			arr1[length1 - 1] = last;
@@ -66,7 +66,7 @@ int main()
 		delete[] arr2;
 		fin.close();
 	}
-	else {
+	else if(fon.is_open()) {
 		fon << "Не удалось открыть файл in.txt";
 	}
 	fon.close();
